@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -78,12 +79,14 @@ public class LoginTest extends BaseTest {
         loginPage.login(validEmail, validPassword);
         driverWait.until(ExpectedConditions.urlContains("/home"));
         Assert.assertTrue(driver.getCurrentUrl().contains("/home"));
+        loginPage.logout();
     }
 
     @Test
-    public void logoutButtonTest() {
+    public void logoutButtonTest() throws InterruptedException {
         String validEmail = "admin@admin.com";
         String validPassword = "12345";
+        Thread.sleep(3000);
         loginPage.login(validEmail, validPassword);
         Assert.assertTrue(loginPage.isLogoutButtonDisplayed());
         loginPage.logout();
@@ -95,6 +98,7 @@ public class LoginTest extends BaseTest {
 
 
     }
+
 
 
 }
