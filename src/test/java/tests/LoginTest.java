@@ -35,7 +35,6 @@ public class LoginTest extends BaseTest {
         String emailExpected = "email";
         String passwordExpected = "password";
         driverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("email")));
-
         String emailActual = loginPage.getEmailField();
         String passwordActual = loginPage.getPassword();
         Assert.assertEquals(emailActual, emailExpected);
@@ -48,13 +47,8 @@ public class LoginTest extends BaseTest {
 
         String email = faker.internet().emailAddress();
         String password = faker.internet().password();
-
-
-
         loginPage.login(email,password);
         driverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]")));
-
-
         Assert.assertTrue(loginPage.isErrorMessageDisplayed());
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"));
 
@@ -64,10 +58,8 @@ public class LoginTest extends BaseTest {
     public void isErrorMessageDisplayedWhenPasswordIsWrong() {
         String validEmail = "admin@admin.com";
         String password = faker.internet().password();
-        // jesi na login stranici ovde?
         loginPage.login(validEmail, password);
         driverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]")));
-     ;
         Assert.assertTrue(loginPage.isErrorPasswordDisplayed());
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"));
     }
@@ -84,10 +76,9 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void logoutButtonTest() throws InterruptedException {
-        String validEmail = "admin@admin.com";
-        String validPassword = "12345";
+
         Thread.sleep(3000);
-        loginPage.login(validEmail, validPassword);
+        loginPage.login("admin@admin.com", "12345");
         Assert.assertTrue(loginPage.isLogoutButtonDisplayed());
         loginPage.logout();
         driverWait.until(ExpectedConditions.urlContains("/login"));

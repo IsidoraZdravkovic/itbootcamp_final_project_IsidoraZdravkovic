@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AdminCitiesPage extends BasePage{
+public class AdminCitiesPage extends BasePage {
     Faker faker = new Faker();
-     String fakeCity = faker.address().city();
+    String fakeCity = faker.address().city();
 
     @FindBy(xpath = "//*[@id=\"app\"]/div/div/header/div/div[3]/button[2]")
     private WebElement logoutAdminButton;
@@ -31,7 +31,7 @@ public class AdminCitiesPage extends BasePage{
     @FindBy(id = "search")
     private WebElement inputSearch;
 
-    @FindBy (id = "name")
+    @FindBy(id = "name")
     private WebElement inputEdited;
 
     @FindBy(className = "btnSave")
@@ -42,12 +42,12 @@ public class AdminCitiesPage extends BasePage{
     @FindBy(xpath = "/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[2]/table/tbody/tr[1]/td[2]")
     private WebElement searchResults;
 
-    @FindBy(id ="delete") // trebalo bi da radi isto, ali aj da probamo
+    @FindBy(id = "delete")
     private WebElement deleteButton;
-@FindBy(css = "#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--text.theme--light.v-size--default.red--text.text--lighten3")
+    @FindBy(css = "#app > div.v-dialog__content.v-dialog__content--active > div > div > div.v-card__actions > button.v-btn.v-btn--text.theme--light.v-size--default.red--text.text--lighten3")
     private WebElement confirmDeleteButton;
 
-    @FindBy (xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")
     private WebElement isDeleteSuccessfulyMessageDisplayed;
 
 //*[@id="app"]/div[5]/div/div/div[2]/button[2]/span
@@ -55,21 +55,21 @@ public class AdminCitiesPage extends BasePage{
     public AdminCitiesPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
     }
-    public void home () {
+
+    public void home() {
         driver.get("https://vue-demo.daniel-avellaneda.com/home");
     }
 
-    public void enterAdminCitiesPage () {
+    public void enterAdminCitiesPage() {
         driver.get("https://vue-demo.daniel-avellaneda.com/admin/cities");
     }
-    public boolean isLogoutAdminButtonDisplayed () {
+
+    public boolean isLogoutAdminButtonDisplayed() {
         return logoutAdminButton.isDisplayed();
     }
 
 
-
-
-    public void createNewCityMethod () {
+    public void createNewCityMethod() {
         newItem.click();
         newItemInput.clear();
         newItemInput.sendKeys(fakeCity);
@@ -77,7 +77,7 @@ public class AdminCitiesPage extends BasePage{
     }
 
 
-    public boolean isMessageSaveDisplayed () {
+    public boolean isMessageSaveDisplayed() {
         return messageSaveSuccessful.isDisplayed();
     }
 
@@ -89,42 +89,45 @@ public class AdminCitiesPage extends BasePage{
         this.inputEdited.sendKeys(fakeCity + " - edited");
         saveButtonForEditedCity.click();
     }
-    public boolean isSaveEditedSuc () {
-       return messageSaveSucefulyForEditedCity.isDisplayed();
+
+    public boolean isSaveEditedSuc() {
+        return messageSaveSucefulyForEditedCity.isDisplayed();
     }
-    public void clickLogOutAdmin () {
+
+    public void clickLogOutAdmin() {
         logoutAdminButton.click();
     }
-    public void search () {
+
+    public void search() {
         inputSearch.click();
         inputSearch.sendKeys(fakeCity + " - edited");
     }
-    public boolean isVisibleResults () {
+
+    public boolean isVisibleResults() {
         return searchResults.isDisplayed();
     }
-    public String getTextFromSearchResults () {
+
+    public String getTextFromSearchResults() {
         String expected = searchResults.getText();
         return expected;
     }
-    public String fakeCityPlusEdited () {
+
+    public String fakeCityPlusEdited() {
         return fakeCity + " - edited";
     }
-    public void deleteCitiesOne () {
+
+    public void deleteCitiesOne() {
         deleteButton.click();
     }
+
     public void deleteCitiesTwo() {
-       confirmDeleteButton.click();
+        confirmDeleteButton.click();
 
     }
-    public boolean isMessageDeleteSucDisplayed () {
+
+    public boolean isMessageDeleteSucDisplayed() {
         return isDeleteSuccessfulyMessageDisplayed.isDisplayed();
     }
-
-
-
-
-
-
 
 
 //cityField.sendKeys(city)

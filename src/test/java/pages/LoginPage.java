@@ -13,8 +13,6 @@ public class LoginPage extends BasePage {
 
     @FindBy(id = "email")
     private WebElement emailField;
-
-
     @FindBy(id = "password")
     private WebElement password;
 
@@ -22,9 +20,6 @@ public class LoginPage extends BasePage {
     private WebElement loginButton;
     @FindBy(xpath = "//*[@id=\"app\"]/div/div/header/div/div[3]/a[3]")
     private WebElement login;
-    ////*[@id="app"]/div/main/div/div[2]/div/div/div[3]/span/form/div/div[3]/button
-    ///*[@id="app"]/div/div/header/div/div[3]/a[3]
-
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]")
     private WebElement errorMessage;
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]")
@@ -65,11 +60,6 @@ public class LoginPage extends BasePage {
     public void logout () {
         logoutButton.click();
     }
-//    public void adminCitesLoginIn() {
-//        String email = "admin@admin.com";
-//        String password = "12345";
-//        loginButton.click();
-//
-//    }
+
 }
 

@@ -22,7 +22,6 @@ public class SignUpPage extends BasePage {
 
     @FindBy(id = "confirmPassword")
     private WebElement confirmPassword;
-
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[3]/div/div/div/div/div[1]")
     private WebElement errorMessageUserAlreadyExists;
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[2]/span/form/div/div[5]/button")

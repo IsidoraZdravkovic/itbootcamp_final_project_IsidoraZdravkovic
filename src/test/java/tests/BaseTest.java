@@ -19,7 +19,9 @@ public abstract class BaseTest {
     protected SignUpPage signUpPage;
     protected AdminCitiesPage adminCitiesPage;
     protected AuthRoutesPage authRoutesPage;
-protected HomePage homePage;
+    protected HomePage homePage;
+    protected LocalePage localePage;
+    protected ProfilePage profilePage;
 
     @BeforeClass
     public void beforeClass() {
@@ -30,15 +32,17 @@ protected HomePage homePage;
         loginPage = new LoginPage(driver, driverWait);
         signUpPage = new SignUpPage(driver, driverWait);
         adminCitiesPage = new AdminCitiesPage(driver, driverWait);
-        authRoutesPage = new AuthRoutesPage(driver,driverWait);
+        authRoutesPage = new AuthRoutesPage(driver, driverWait);
         homePage = new HomePage(driver, driverWait);
+        localePage = new LocalePage(driver,driverWait);
+        profilePage = new ProfilePage(driver,driverWait);
 
 
 
     }
 
     @BeforeMethod
-    public void beforeMethod () {
+    public void beforeMethod() {
         driver.get("https://vue-demo.daniel-avellaneda.com");
 
 

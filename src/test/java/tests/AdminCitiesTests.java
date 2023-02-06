@@ -44,8 +44,7 @@ public class AdminCitiesTests extends BaseTest {
     }
 
     @Test
-    public void editNewCity() throws InterruptedException {
-        Thread.sleep(5000);
+    public void editNewCity() {
         adminCitiesPage.editCreatedCityMethod();
         Assert.assertTrue(adminCitiesPage.isSaveEditedSuc());
     }
@@ -53,8 +52,7 @@ public class AdminCitiesTests extends BaseTest {
     @Test
     public void searchCity() throws InterruptedException {
         adminCitiesPage.search();
-        Thread.sleep(5000);
-        driverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("text-left")));
+        Thread.sleep(2000);
         Assert.assertTrue(adminCitiesPage.isVisibleResults());
         Assert.assertEquals(adminCitiesPage.fakeCityPlusEdited(), adminCitiesPage.getTextFromSearchResults());
 
@@ -63,10 +61,10 @@ public class AdminCitiesTests extends BaseTest {
     @Test(priority = 5)
     public void deleteCity() throws InterruptedException {
         adminCitiesPage.search();
-        Thread.sleep(5000);
+
         adminCitiesPage.deleteCitiesOne();
         adminCitiesPage.deleteCitiesTwo();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         Assert.assertTrue(adminCitiesPage.isMessageDeleteSucDisplayed());
 
 
