@@ -5,13 +5,25 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AdminCitiesPage;
+import pages.LoginPage;
+import utils.FakerClass;
 
 public class AdminCitiesTests extends BaseTest {
 
-    Faker faker = new Faker();
+    private LoginPage loginPage;
+    private AdminCitiesPage adminCitiesPage;
+
+    @BeforeClass
+    @Override
+    public void beforeClass() {
+        super.beforeClass();
+        loginPage = new LoginPage(driver, driverWait);
+        adminCitiesPage = new AdminCitiesPage(driver, driverWait);
+    }
 
     @BeforeMethod
     @Override
@@ -53,6 +65,7 @@ public class AdminCitiesTests extends BaseTest {
     public void searchCity() throws InterruptedException {
         adminCitiesPage.search();
         Thread.sleep(2000);
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(By.className("text-left")));
         Assert.assertTrue(adminCitiesPage.isVisibleResults());
         Assert.assertEquals(adminCitiesPage.fakeCityPlusEdited(), adminCitiesPage.getTextFromSearchResults());
 
@@ -64,7 +77,9 @@ public class AdminCitiesTests extends BaseTest {
 
         adminCitiesPage.deleteCitiesOne();
         adminCitiesPage.deleteCitiesTwo();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
+//        driverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("\"//*[@id=\\\"app\\\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]\"")));
+
         Assert.assertTrue(adminCitiesPage.isMessageDeleteSucDisplayed());
 
 

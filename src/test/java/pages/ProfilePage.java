@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage extends BasePage{
-    Faker faker = new Faker();
+
 
     public ProfilePage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);

@@ -6,9 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage {
+    private LoginPage loginPage;
+
 
     public LoginPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
+
     }
 
     @FindBy(id = "email")

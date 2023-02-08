@@ -6,10 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.FakerClass;
 
 public class AdminCitiesPage extends BasePage {
-    Faker faker = new Faker();
-    String fakeCity = faker.address().city();
+    FakerClass faker = new FakerClass();
+    String fakeCity = FakerClass.getFakeCity();
+
+
 
     @FindBy(xpath = "//*[@id=\"app\"]/div/div/header/div/div[3]/button[2]")
     private WebElement logoutAdminButton;

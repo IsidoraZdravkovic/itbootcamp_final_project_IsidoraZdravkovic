@@ -5,14 +5,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.SignUpPage;
 import sun.awt.windows.ThemeReader;
 
 public class SignUpTest extends BaseTest {
-    Faker faker = new Faker();
+    private SignUpPage signUpPage;
 
+    @BeforeClass
+    @Override
+    public void beforeClass() {
+        super.beforeClass();
+        signUpPage = new SignUpPage(driver, driverWait);
+    }
     @BeforeMethod
     @Override
     public void beforeMethod() {

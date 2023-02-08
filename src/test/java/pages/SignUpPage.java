@@ -5,9 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.FakerClass;
 
 public class SignUpPage extends BasePage {
-    Faker faker = new Faker();
+
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/header/div/div[3]/a[4]")
     private WebElement singUpButton;
@@ -61,8 +62,8 @@ public class SignUpPage extends BasePage {
 
     }
     public void validSignUp () {
-        this.name.sendKeys(faker.name().fullName());
-        this.emailSignUp.sendKeys(faker.internet().emailAddress());
+        this.name.sendKeys(FakerClass.getFakeName());
+        this.emailSignUp.sendKeys(FakerClass.getFakeEmail());
         this.passwordSignUp.sendKeys("12345");
         this.confirmPassword.sendKeys("12345");
         signUpUser.click();

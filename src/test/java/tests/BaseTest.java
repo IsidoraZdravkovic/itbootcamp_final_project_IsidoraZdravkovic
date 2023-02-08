@@ -12,34 +12,23 @@ import pages.*;
 import java.time.Duration;
 
 public abstract class BaseTest {
-    Faker faker = new Faker();
+
     protected WebDriver driver;
     protected WebDriverWait driverWait;
-    protected LoginPage loginPage;
-    protected SignUpPage signUpPage;
-    protected AdminCitiesPage adminCitiesPage;
-    protected AuthRoutesPage authRoutesPage;
     protected HomePage homePage;
-    protected LocalePage localePage;
-    protected ProfilePage profilePage;
+
 
     @BeforeClass
     public void beforeClass() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Bootcamp\\chromedriver.exe");
+
         driver = new ChromeDriver();
         driverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        loginPage = new LoginPage(driver, driverWait);
-        signUpPage = new SignUpPage(driver, driverWait);
-        adminCitiesPage = new AdminCitiesPage(driver, driverWait);
-        authRoutesPage = new AuthRoutesPage(driver, driverWait);
         homePage = new HomePage(driver, driverWait);
-        localePage = new LocalePage(driver,driverWait);
-        profilePage = new ProfilePage(driver,driverWait);
-
-
 
     }
+
+
 
     @BeforeMethod
     public void beforeMethod() {

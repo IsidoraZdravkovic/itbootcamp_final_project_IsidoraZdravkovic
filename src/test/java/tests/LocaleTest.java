@@ -5,8 +5,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.LocalePage;
 
 public class LocaleTest extends BaseTest{
+    private LocalePage localePage;
+
+    @BeforeMethod
+    @Override
+    public void beforeClass () {
+        super.beforeClass();
+        localePage = new LocalePage(driver,driverWait);
+    }
 
     @BeforeMethod
     @Override

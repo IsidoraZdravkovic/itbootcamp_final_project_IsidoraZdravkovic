@@ -3,16 +3,30 @@ package tests;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.devtools.v85.log.Log;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.AdminCitiesPage;
 import pages.LoginPage;
 
 public class LoginTest extends BaseTest {
+    private LoginPage loginPage;
+
+
+    @BeforeClass
+     @Override
+     public void beforeClass () {
+        super.beforeClass();
+        loginPage = new LoginPage(driver, driverWait);
+
+    }
+
 
     Faker faker = new Faker();
 

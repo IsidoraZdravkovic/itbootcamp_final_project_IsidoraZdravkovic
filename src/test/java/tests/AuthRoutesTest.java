@@ -2,21 +2,32 @@ package tests;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.AuthRoutesPage;
+import pages.BasePage;
 
 public class AuthRoutesTest extends BaseTest{
+    private AuthRoutesPage authRoutesPage;
+
+
+    @BeforeClass
+    @Override
+    public void beforeClass () {
+        super.beforeClass();
+
+
+    }
 
     @BeforeMethod
     @Override
     public void beforeMethod () {
         super.beforeMethod();
+        authRoutesPage = new AuthRoutesPage(driver, driverWait);
 
     }
-    //Test #1: Forbids visits to home url if not authenticated
-    //assert:
-    //•	Ucitati /home stranu kada korisnik nije ulogovan
-    //•	Verifikovati da se u url-u stranice javlja ruta /login
+
 
     @Test
     public void forbidsVisitsToHomeUrlIfNotAuthenticatedAssert () {

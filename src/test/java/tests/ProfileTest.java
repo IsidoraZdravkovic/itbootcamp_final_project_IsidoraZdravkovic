@@ -4,10 +4,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.ProfilePage;
+import pages.SignUpPage;
+import utils.FakerClass;
 
 public class ProfileTest extends BaseTest{
+    private SignUpPage signUpPage;
+    private ProfilePage profilePage;
+    @BeforeClass
+    @Override
+    public void beforeClass() {
+        super.beforeClass();
+        signUpPage = new SignUpPage(driver, driverWait);
+        profilePage = new ProfilePage(driver,driverWait);
+    }
 
     @BeforeMethod
     @Override
@@ -21,12 +34,12 @@ public class ProfileTest extends BaseTest{
     @Test
     public void editProfile () {
         profilePage.myProfileButtonClick();
-        String name = faker.name().name();
-        String phone = faker.phoneNumber().phoneNumber();
+        String name = FakerClass.getFakeName();
+        String phone = FakerClass.getFakePhone();
         String city = "Chicago";
-        String country = faker.country().name();
-        String twitter = "https://twitter.com/" + faker.name().firstName().toLowerCase();
-        String gitHub = "https://github.com/" + faker.name().firstName().toLowerCase();
+        String country = FakerClass.getFakeCountry();
+        String twitter = "https://twitter.com/" + FakerClass.getFakeName().toLowerCase();
+        String gitHub = "https://github.com/" + FakerClass.getFakeName().toLowerCase();
         profilePage.editProfile(name,phone, city,country,twitter,gitHub);
         Assert.assertEquals(profilePage.getNameValue(),name);
         Assert.assertEquals(profilePage.getPhoneValue(),phone);
